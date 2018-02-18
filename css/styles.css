@@ -1,0 +1,24 @@
+body{
+  background-color: black;
+  color: white;
+  font-family: 'Arial', sans-serif;
+}
+
+#my-map {
+  position: absolute;
+  margin-left: 25%;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+#description {
+  background-color: black;
+  height:50%;
+  width: 25%;
+}
+
+h2{
+  text-align: center;
+}
