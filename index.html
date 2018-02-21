@@ -22,7 +22,50 @@
 </head>
 
 <body>
-  <div id='description'>
+  <div id="my-map">
+    <div id="title-container">
+      <div id="legend">
+        <h3>Legend</h3>
+        <div class="legendItem Asian">Asian</div>
+        <div class="legendItem Black">Black</div>
+        <div class="legendItem White">White</div>
+        <div class="legendItem Other">Other</div>
+      </div>
+      <h1>Traffic Stops in Dallas County (2015)</h1>
+      <!-- <p>This map uses crowd-sourced data from our NYU web mapping class, showing each student's favorite Pizza place.</p>
+      <p>Click a circle to see the name of the pizza shop and which student likes to eat there.</p> -->
+      <div class="btn-group">
+          <button type="button" id="Full">Full Year (2015)</button>
+          <button type="button" id="Jan">January</button>
+          <button type="button" id="Feb">February</button>
+          <button type="button" id="Mar">March</button>
+          <button type="button" id="Apr">April</button>
+          <br>
+          <button type="button" id="May">May</button>
+          <button type="button" id="Jun">June</button>
+          <button type="button" id="Jul">July</button>
+          <button type="button" id="Aug">August</button>
+          <button type="button" id="Sep">September</button>
+          <button type="button" id="Oct">October</button>
+          <button type="button" id="Nov">November</button>
+          <button type="button" id="Dec">December</button>
+          <br>
+    </div>
+    <div>
+    <input type="checkbox" id="contraband" name="contrabandFound" value="contr">
+    <label for="contraband">Contraband Found? (Check for Yes)</label>
+    </div>
+    <div>
+    <div>
+    <input type="checkbox" id="search" name="searchConducted" value="searchC">
+    <label for="search">Search Conducted? (Check for Yes)</label>
+    </div>
+    <div>
+      <button type="submit">Filter by Stop Outcome</button>
+    </div>
+  </div>
+</div>
+  <!-- <div id='description'>
     <h2>Mapping Traffic Stops in Dallas County</h2>
   </div>
   <div class="btn-group">
@@ -65,7 +108,7 @@
 
   </div>
   <div id='my-map'>
-  </div>
+  </div> -->
 
 
   <script src="//unpkg.com/leaflet@1.3.1/dist/leaflet.js"

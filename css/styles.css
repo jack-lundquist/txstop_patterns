@@ -1,16 +1,64 @@
 body{
-  background-color: black;
-  color: white;
+  color: black;
   font-family: 'Arial', sans-serif;
 }
 
 #my-map {
   position: absolute;
-  margin-left: 25%;
   top: 0;
   right: 0;
   left: 0;
   bottom: 0;
+}
+
+#title-container {
+  position: absolute;
+  z-index: 1000;
+  top: 11px;
+  left: 56px;
+  background: #FFF;
+  padding: 15px;
+  border-radius: 7px;
+}
+
+#legend {
+  float: right;
+  background: #e6e6e6;
+  padding: 8px;
+  margin-left: 15px;
+}
+
+.legendItem {
+}
+
+.legendItem::before {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  -moz-border-radius: 7.5px;
+  -webkit-border-radius: 7.5px;
+  border-radius: 16.5px;
+  border: 2px solid #FFF;
+  position: relative;
+  top: 4px;
+  margin-right: 5px;
+}
+
+.Asian::before {
+  background-color: purple;
+}
+
+.White::before {
+  background-color: green;
+}
+
+.Black::before {
+  background-color: orange;
+}
+
+.Other::before {
+  background-color: black;
 }
 
 #description {
@@ -21,4 +69,11 @@ body{
 
 h2{
   text-align: center;
+}
+
+button {
+  outline: none;
+  padding: 6px;
+  background-color: white;
+  border-radius: 15px;
 }

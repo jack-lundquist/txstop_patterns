@@ -1,5 +1,5 @@
 //map variable
-var map = L.map('my-map').setView([32.775729, -96.814270], 9);
+var map = L.map('my-map').setView([32.764181,-97.124634], 10);
 
 //basemap
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -295,9 +295,9 @@ dallas.then(function(data) {
             });
         }
     });
-    map.fitBounds(allStops.getBounds(), {
-        padding: [50, 50]
-    });
+    // map.fitBounds(allStops.getBounds(), {
+    //     padding: [50, 50]
+    // });
 		january.addTo(map);
     february.addTo(map);
 		march.addTo(map);
