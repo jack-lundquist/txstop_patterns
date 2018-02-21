@@ -24,7 +24,31 @@ dallas.then(function(data) {
 						return feature.properties.stop_date.includes("2015-01");
         },
         pointToLayer: function(feature, latlng) {
-            return L.circleMarker(latlng, options).on('click', function() {
+  var raceColor = 'black';
+  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+  if (feature.properties.driver_race === 'White') raceColor = 'green';
+  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+  var options = {
+      radius: 6,
+      opacity: 1,
+      fillColor: raceColor,
+      fillOpacity: 0.9,
+      color: raceColor,
+      weight: 2,
+    };
+					var raceColor = 'black';
+					if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+					if (feature.properties.driver_race === 'White') raceColor = 'green';
+					if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+					var options = {
+							radius: 6,
+							opacity: 1,
+							fillColor: raceColor,
+							fillOpacity: 0.9,
+							color: raceColor,
+							weight: 2,
+						};
+						return L.circleMarker(latlng, options).on('click', function() {
                 this.bindPopup(feature.properties.violation).openPopup();
             });
         }
@@ -34,6 +58,18 @@ dallas.then(function(data) {
 						return feature.properties.stop_date.includes("2015-02");
         },
         pointToLayer: function(feature, latlng) {
+  var raceColor = 'black';
+  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+  if (feature.properties.driver_race === 'White') raceColor = 'green';
+  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+  var options = {
+      radius: 6,
+      opacity: 1,
+      fillColor: raceColor,
+      fillOpacity: 0.9,
+      color: raceColor,
+      weight: 2,
+    };
             return L.circleMarker(latlng, options).on('click', function() {
                 this.bindPopup(feature.properties.violation).openPopup();
             });
@@ -44,6 +80,18 @@ dallas.then(function(data) {
 						return feature.properties.stop_date.includes("2015-03");
         },
         pointToLayer: function(feature, latlng) {
+  var raceColor = 'black';
+  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+  if (feature.properties.driver_race === 'White') raceColor = 'green';
+  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+  var options = {
+      radius: 6,
+      opacity: 1,
+      fillColor: raceColor,
+      fillOpacity: 0.9,
+      color: raceColor,
+      weight: 2,
+    };
             return L.circleMarker(latlng, options).on('click', function() {
                 this.bindPopup(feature.properties.violation).openPopup();
             });
@@ -54,6 +102,18 @@ dallas.then(function(data) {
 						return feature.properties.stop_date.includes("2015-04");
         },
         pointToLayer: function(feature, latlng) {
+  var raceColor = 'black';
+  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+  if (feature.properties.driver_race === 'White') raceColor = 'green';
+  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+  var options = {
+      radius: 6,
+      opacity: 1,
+      fillColor: raceColor,
+      fillOpacity: 0.9,
+      color: raceColor,
+      weight: 2,
+    };
             return L.circleMarker(latlng, options).on('click', function() {
                 this.bindPopup(feature.properties.violation).openPopup();
             });
@@ -64,6 +124,18 @@ dallas.then(function(data) {
 						return feature.properties.stop_date.includes("2015-05");
         },
         pointToLayer: function(feature, latlng) {
+  var raceColor = 'black';
+  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+  if (feature.properties.driver_race === 'White') raceColor = 'green';
+  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+  var options = {
+      radius: 6,
+      opacity: 1,
+      fillColor: raceColor,
+      fillOpacity: 0.9,
+      color: raceColor,
+      weight: 2,
+    };
             return L.circleMarker(latlng, options).on('click', function() {
                 this.bindPopup(feature.properties.violation).openPopup();
             });
@@ -74,6 +146,18 @@ dallas.then(function(data) {
 						return feature.properties.stop_date.includes("2015-06");
         },
         pointToLayer: function(feature, latlng) {
+  var raceColor = 'black';
+  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+  if (feature.properties.driver_race === 'White') raceColor = 'green';
+  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+  var options = {
+      radius: 6,
+      opacity: 1,
+      fillColor: raceColor,
+      fillOpacity: 0.9,
+      color: raceColor,
+      weight: 2,
+    };
             return L.circleMarker(latlng, options).on('click', function() {
                 this.bindPopup(feature.properties.violation).openPopup();
             });
@@ -84,6 +168,18 @@ dallas.then(function(data) {
 						return feature.properties.stop_date.includes("2015-07");
         },
         pointToLayer: function(feature, latlng) {
+  var raceColor = 'black';
+  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+  if (feature.properties.driver_race === 'White') raceColor = 'green';
+  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+  var options = {
+      radius: 6,
+      opacity: 1,
+      fillColor: raceColor,
+      fillOpacity: 0.9,
+      color: raceColor,
+      weight: 2,
+    };
             return L.circleMarker(latlng, options).on('click', function() {
                 this.bindPopup(feature.properties.violation).openPopup();
             });
@@ -94,6 +190,18 @@ dallas.then(function(data) {
 						return feature.properties.stop_date.includes("2015-08");
         },
         pointToLayer: function(feature, latlng) {
+  var raceColor = 'black';
+  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+  if (feature.properties.driver_race === 'White') raceColor = 'green';
+  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+  var options = {
+      radius: 6,
+      opacity: 1,
+      fillColor: raceColor,
+      fillOpacity: 0.9,
+      color: raceColor,
+      weight: 2,
+    };
             return L.circleMarker(latlng, options).on('click', function() {
                 this.bindPopup(feature.properties.violation).openPopup();
             });
@@ -104,6 +212,18 @@ dallas.then(function(data) {
 						return feature.properties.stop_date.includes("2015-09");
         },
         pointToLayer: function(feature, latlng) {
+  var raceColor = 'black';
+  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+  if (feature.properties.driver_race === 'White') raceColor = 'green';
+  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+  var options = {
+      radius: 6,
+      opacity: 1,
+      fillColor: raceColor,
+      fillOpacity: 0.9,
+      color: raceColor,
+      weight: 2,
+    };
             return L.circleMarker(latlng, options).on('click', function() {
                 this.bindPopup(feature.properties.violation).openPopup();
             });
@@ -114,6 +234,18 @@ dallas.then(function(data) {
 						return feature.properties.stop_date.includes("2015-10");
         },
         pointToLayer: function(feature, latlng) {
+  var raceColor = 'black';
+  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+  if (feature.properties.driver_race === 'White') raceColor = 'green';
+  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+  var options = {
+      radius: 6,
+      opacity: 1,
+      fillColor: raceColor,
+      fillOpacity: 0.9,
+      color: raceColor,
+      weight: 2,
+    };
             return L.circleMarker(latlng, options).on('click', function() {
                 this.bindPopup(feature.properties.violation).openPopup();
             });
@@ -124,6 +256,18 @@ dallas.then(function(data) {
 						return feature.properties.stop_date.includes("2015-11");
         },
         pointToLayer: function(feature, latlng) {
+  var raceColor = 'black';
+  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+  if (feature.properties.driver_race === 'White') raceColor = 'green';
+  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+  var options = {
+      radius: 6,
+      opacity: 1,
+      fillColor: raceColor,
+      fillOpacity: 0.9,
+      color: raceColor,
+      weight: 2,
+    };
             return L.circleMarker(latlng, options).on('click', function() {
                 this.bindPopup(feature.properties.violation).openPopup();
             });
@@ -134,6 +278,18 @@ dallas.then(function(data) {
 						return feature.properties.stop_date.includes("2015-12");
         },
         pointToLayer: function(feature, latlng) {
+  var raceColor = 'black';
+  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+  if (feature.properties.driver_race === 'White') raceColor = 'green';
+  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+  var options = {
+      radius: 6,
+      opacity: 1,
+      fillColor: raceColor,
+      fillOpacity: 0.9,
+      color: raceColor,
+      weight: 2,
+    };
             return L.circleMarker(latlng, options).on('click', function() {
                 this.bindPopup(feature.properties.violation).openPopup();
             });
