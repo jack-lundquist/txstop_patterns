@@ -1,4 +1,3 @@
-//map variable
 var map = L.map('my-map').setView([32.764181,-97.124634], 10);
 
 //basemap
@@ -20,15 +19,67 @@ var dallas = $.getJSON("data/dallas3.geojson");
 dallas.then(function(data) {
 		var contrabandData = L.geoJson(data, {
 			filter: function(feature, layer) {
-				return feature.properties.contraband_found == 1;
-			}
+				return feature.properties.contraband_found.includes("1");
+			},
+			pointToLayer: function(feature, latlng) {
+			var raceColor = 'black';
+			if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+			if (feature.properties.driver_race === 'White') raceColor = 'green';
+			if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+			var options = {
+					radius: 6,
+					opacity: 1,
+					fillColor: raceColor,
+					fillOpacity: 0.9,
+					color: raceColor,
+					weight: 2,
+				};
+								return L.circleMarker(latlng, options).on('click', function() {
+										this.bindPopup(feature.properties.violation).openPopup();
+								});
+						}
 		});
 		var searchData = L.geoJson(data, {
 			filter: function(feature, layer) {
-				return feature.properties.search_conducted == 1;
-			}
+				return feature.properties.search_conducted.includes("1");
+			},
+			pointToLayer: function(feature, latlng) {
+			var raceColor = 'black';
+			if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+			if (feature.properties.driver_race === 'White') raceColor = 'green';
+			if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+			var options = {
+					radius: 6,
+					opacity: 1,
+					fillColor: raceColor,
+					fillOpacity: 0.9,
+					color: raceColor,
+					weight: 2,
+				};
+								return L.circleMarker(latlng, options).on('click', function() {
+										this.bindPopup(feature.properties.violation).openPopup();
+								});
+						}
 		});
-		var allData = L.geoJson(data);
+		var allData = L.geoJson(data, {
+				pointToLayer: function(feature, latlng) {
+				var raceColor = 'black';
+				if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+				if (feature.properties.driver_race === 'White') raceColor = 'green';
+				if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+				var options = {
+						radius: 6,
+						opacity: 1,
+						fillColor: raceColor,
+						fillOpacity: 0.9,
+						color: raceColor,
+						weight: 2,
+					};
+									return L.circleMarker(latlng, options).on('click', function() {
+											this.bindPopup(feature.properties.violation).openPopup();
+									});
+							}
+					});
     var januaryAll = L.geoJson(data, {
         filter: function(feature, layer) {
 						return feature.properties.stop_date.includes("2015-01");
@@ -306,7 +357,7 @@ dallas.then(function(data) {
 	        }
 	    });
 
-			var januarySearch = L.geoJson(searchData, {
+			var januarySearch = L.geoJson(searchData.data, {
 	        filter: function(feature, layer) {
 							return feature.properties.stop_date.includes("2015-01");
 	        },
@@ -340,7 +391,7 @@ dallas.then(function(data) {
 		            });
 		        }
 		    });
-			var februarySearch = L.geoJson(searchData, {
+			var februarySearch = L.geoJson(searchData.data, {
 	        filter: function(feature, layer) {
 							return feature.properties.stop_date.includes("2015-02");
 	        },
@@ -362,7 +413,7 @@ dallas.then(function(data) {
 		            });
 		        }
 		    });
-			var marchSearch = L.geoJson(searchData, {
+			var marchSearch = L.geoJson(searchData.data, {
 	        filter: function(feature, layer) {
 							return feature.properties.stop_date.includes("2015-03");
 	        },
@@ -384,7 +435,7 @@ dallas.then(function(data) {
 		            });
 		        }
 		    });
-			var aprilSearch = L.geoJson(searchData, {
+			var aprilSearch = L.geoJson(searchData.data, {
 	        filter: function(feature, layer) {
 							return feature.properties.stop_date.includes("2015-04");
 	        },
@@ -406,7 +457,7 @@ dallas.then(function(data) {
 		            });
 		        }
 		    });
-			var maySearch = L.geoJson(searchData, {
+			var maySearch = L.geoJson(searchData.data, {
 	        filter: function(feature, layer) {
 							return feature.properties.stop_date.includes("2015-05");
 	        },
@@ -428,7 +479,7 @@ dallas.then(function(data) {
 		            });
 		        }
 		    });
-			var juneSearch = L.geoJson(searchData, {
+			var juneSearch = L.geoJson(searchData.data, {
 	        filter: function(feature, layer) {
 							return feature.properties.stop_date.includes("2015-06");
 	        },
@@ -450,7 +501,7 @@ dallas.then(function(data) {
 		            });
 		        }
 		    });
-			var julySearch = L.geoJson(searchData, {
+			var julySearch = L.geoJson(searchData.data, {
 	        filter: function(feature, layer) {
 							return feature.properties.stop_date.includes("2015-07");
 	        },
@@ -472,7 +523,7 @@ dallas.then(function(data) {
 		            });
 		        }
 		    });
-			var augustSearch = L.geoJson(searchData, {
+			var augustSearch = L.geoJson(searchData.data, {
 	        filter: function(feature, layer) {
 							return feature.properties.stop_date.includes("2015-08");
 	        },
@@ -494,7 +545,7 @@ dallas.then(function(data) {
 		            });
 		        }
 		    });
-			var septemberSearch = L.geoJson(searchData, {
+			var septemberSearch = L.geoJson(searchData.data, {
 	        filter: function(feature, layer) {
 							return feature.properties.stop_date.includes("2015-09");
 	        },
@@ -516,7 +567,7 @@ dallas.then(function(data) {
 		            });
 		        }
 		    });
-			var octoberSearch = L.geoJson(searchData, {
+			var octoberSearch = L.geoJson(searchData.data, {
 	        filter: function(feature, layer) {
 							return feature.properties.stop_date.includes("2015-10");
 	        },
@@ -538,7 +589,7 @@ dallas.then(function(data) {
 		            });
 		        }
 		    });
-			var novemberSearch = L.geoJson(searchData, {
+			var novemberSearch = L.geoJson(searchData.data, {
 	        filter: function(feature, layer) {
 							return feature.properties.stop_date.includes("2015-11");
 	        },
@@ -560,7 +611,7 @@ dallas.then(function(data) {
 		            });
 		        }
 		    });
-			var decemberSearch = L.geoJson(searchData, {
+			var decemberSearch = L.geoJson(searchData.data, {
 	        filter: function(feature, layer) {
 							return feature.properties.stop_date.includes("2015-12");
 	        },
@@ -583,7 +634,7 @@ dallas.then(function(data) {
 		        }
 		    });
 
-				var januaryContraband = L.geoJson(contrabandData, {
+				var januaryContraband = L.geoJson(contrabandData.data, {
 		        filter: function(feature, layer) {
 								return feature.properties.stop_date.includes("2015-01");
 		        },
@@ -617,7 +668,7 @@ dallas.then(function(data) {
 			            });
 			        }
 			    });
-				var februaryContraband = L.geoJson(contrabandData, {
+				var februaryContraband = L.geoJson(contrabandData.data, {
 		        filter: function(feature, layer) {
 								return feature.properties.stop_date.includes("2015-02");
 		        },
@@ -639,7 +690,7 @@ dallas.then(function(data) {
 			            });
 			        }
 			    });
-				var marchContraband = L.geoJson(contrabandData, {
+				var marchContraband = L.geoJson(contrabandData.data, {
 		        filter: function(feature, layer) {
 								return feature.properties.stop_date.includes("2015-03");
 		        },
@@ -661,7 +712,7 @@ dallas.then(function(data) {
 			            });
 			        }
 			    });
-				var aprilContraband = L.geoJson(contrabandData, {
+				var aprilContraband = L.geoJson(contrabandData.data, {
 		        filter: function(feature, layer) {
 								return feature.properties.stop_date.includes("2015-04");
 		        },
@@ -683,7 +734,7 @@ dallas.then(function(data) {
 			            });
 			        }
 			    });
-				var mayContraband = L.geoJson(contrabandData, {
+				var mayContraband = L.geoJson(contrabandData.data, {
 		        filter: function(feature, layer) {
 								return feature.properties.stop_date.includes("2015-05");
 		        },
@@ -705,7 +756,7 @@ dallas.then(function(data) {
 			            });
 			        }
 			    });
-				var juneContraband = L.geoJson(contrabandData, {
+				var juneContraband = L.geoJson(contrabandData.data, {
 		        filter: function(feature, layer) {
 								return feature.properties.stop_date.includes("2015-06");
 		        },
@@ -727,7 +778,7 @@ dallas.then(function(data) {
 			            });
 			        }
 			    });
-				var julyContraband = L.geoJson(contrabandData, {
+				var julyContraband = L.geoJson(contrabandData.data, {
 		        filter: function(feature, layer) {
 								return feature.properties.stop_date.includes("2015-07");
 		        },
@@ -749,7 +800,7 @@ dallas.then(function(data) {
 			            });
 			        }
 			    });
-				var augustContraband = L.geoJson(contrabandData, {
+				var augustContraband = L.geoJson(contrabandData.data, {
 		        filter: function(feature, layer) {
 								return feature.properties.stop_date.includes("2015-08");
 		        },
@@ -771,7 +822,7 @@ dallas.then(function(data) {
 			            });
 			        }
 			    });
-				var septemberContraband = L.geoJson(contrabandData, {
+				var septemberContraband = L.geoJson(contrabandData.data, {
 		        filter: function(feature, layer) {
 								return feature.properties.stop_date.includes("2015-09");
 		        },
@@ -793,7 +844,7 @@ dallas.then(function(data) {
 			            });
 			        }
 			    });
-				var octoberContraband = L.geoJson(contrabandData, {
+				var octoberContraband = L.geoJson(contrabandData.data, {
 		        filter: function(feature, layer) {
 								return feature.properties.stop_date.includes("2015-10");
 		        },
@@ -815,7 +866,7 @@ dallas.then(function(data) {
 			            });
 			        }
 			    });
-				var novemberContraband = L.geoJson(contrabandData, {
+				var novemberContraband = L.geoJson(contrabandData.data, {
 		        filter: function(feature, layer) {
 								return feature.properties.stop_date.includes("2015-11");
 		        },
@@ -837,7 +888,7 @@ dallas.then(function(data) {
 			            });
 			        }
 			    });
-				var decemberContraband = L.geoJson(contrabandData, {
+				var decemberContraband = L.geoJson(contrabandData.data, {
 		        filter: function(feature, layer) {
 								return feature.properties.stop_date.includes("2015-12");
 		        },
@@ -876,133 +927,237 @@ dallas.then(function(data) {
     decemberAll.addTo(map);
     // The JavaScript below is new
     $("#Jan").click(function() {
-				var type = 'All';
-				if($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) type = "Contraband";
-				else if($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) type = "Search";
+				if ($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) {
+				    var type = "Search"
+				} else if ($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) {
+				    var type = "Contraband"
+				} else {
+				    var type = 'All'
+				};
 				var layer = 'january' + type;
 				map.eachLayer(function (layer) {
 					    map.removeLayer(layer);
 					});
-				map.addLayer(layer);
+				L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+map.addLayer(eval(layer));
     });
 		$("#Feb").click(function() {
-			var type = 'All';
-			if($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) type = "Contraband";
-			else if($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) type = "Search";
+			if ($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) {
+			    var type = "Search"
+			} else if ($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) {
+			    var type = "Contraband"
+			} else {
+			    var type = 'All'
+			};
 			var layer = 'february' + type;
 			map.eachLayer(function (layer) {
 						map.removeLayer(layer);
 				});
-			map.addLayer(layer);
+			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+map.addLayer(eval(layer));
     });
 		$("#Mar").click(function() {
-			var type = 'All';
-			if($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) type = "Contraband";
-			else if($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) type = "Search";
+			if ($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) {
+			    var type = "Search"
+			} else if ($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) {
+			    var type = "Contraband"
+			} else {
+			    var type = 'All'
+			};
 			var layer = 'march' + type;
 			map.eachLayer(function (layer) {
 						map.removeLayer(layer);
 				});
-			map.addLayer(layer);
+			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+map.addLayer(eval(layer));
     });
 		$("#Apr").click(function() {
-			var type = 'All';
-			if($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) type = "Contraband";
-			else if($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) type = "Search";
+			if ($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) {
+			    var type = "Search"
+			} else if ($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) {
+			    var type = "Contraband"
+			} else {
+			    var type = 'All'
+			};
 			var layer = 'april' + type;
 			map.eachLayer(function (layer) {
 						map.removeLayer(layer);
 				});
-			map.addLayer(layer);
+			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+map.addLayer(eval(layer));
 		});
 		$("#May").click(function() {
-			var type = 'All';
-			if($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) type = "Contraband";
-			else if($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) type = "Search";
+			if ($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) {
+			    var type = "Search"
+			} else if ($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) {
+			    var type = "Contraband"
+			} else {
+			    var type = 'All'
+			};
 			var layer = 'may' + type;
 			map.eachLayer(function (layer) {
 						map.removeLayer(layer);
 				});
-			map.addLayer(layer);
+			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+map.addLayer(eval(layer));
 		});
 		$("#Jun").click(function() {
-			var type = 'All';
-			if($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) type = "Contraband";
-			else if($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) type = "Search";
+			if ($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) {
+			    var type = "Search"
+			} else if ($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) {
+			    var type = "Contraband"
+			} else {
+			    var type = 'All'
+			};
 			var layer = 'june' + type;
 			map.eachLayer(function (layer) {
 						map.removeLayer(layer);
 				});
-			map.addLayer(layer);
+			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+map.addLayer(eval(layer));
     });
 		$("#Jul").click(function() {
-			var type = 'All';
-			if($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) type = "Contraband";
-			else if($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) type = "Search";
+			if ($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) {
+			    var type = "Search"
+			} else if ($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) {
+			    var type = "Contraband"
+			} else {
+			    var type = 'All'
+			};
 			var layer = 'july' + type;
 			map.eachLayer(function (layer) {
 						map.removeLayer(layer);
 				});
-			map.addLayer(layer);
+			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+map.addLayer(eval(layer));
     });
 		$("#Aug").click(function() {
-			var type = 'All';
-			if($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) type = "Contraband";
-			else if($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) type = "Search";
+			if ($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) {
+			    var type = "Search"
+			} else if ($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) {
+			    var type = "Contraband"
+			} else {
+			    var type = 'All'
+			};
 			var layer = 'august' + type;
 			map.eachLayer(function (layer) {
 						map.removeLayer(layer);
 				});
-			map.addLayer(layer);
+			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+map.addLayer(eval(layer));
     });
 		$("#Sep").click(function() {
-			var type = 'All';
-			if($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) type = "Contraband";
-			else if($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) type = "Search";
+			if ($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) {
+			    var type = "Search"
+			} else if ($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) {
+			    var type = "Contraband"
+			} else {
+			    var type = 'All'
+			};
 			var layer = 'september' + type;
 			map.eachLayer(function (layer) {
 						map.removeLayer(layer);
 				});
-			map.addLayer(layer);
+			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+map.addLayer(eval(layer));
 		});
 		$("#Oct").click(function() {
-			var type = 'All';
-			if($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) type = "Contraband";
-			else if($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) type = "Search";
+			if ($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) {
+			    var type = "Search"
+			} else if ($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) {
+			    var type = "Contraband"
+			} else {
+			    var type = 'All'
+			};
 			var layer = 'october' + type;
 			map.eachLayer(function (layer) {
 						map.removeLayer(layer);
 				});
-			map.addLayer(layer);
+			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+map.addLayer(eval(layer));
 		});
 		$("#Nov").click(function() {
-			var type = 'All';
-			if($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) type = "Contraband";
-			else if($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) type = "Search";
+			if ($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) {
+			    var type = "Search"
+			} else if ($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) {
+			    var type = "Contraband"
+			} else {
+			    var type = 'All'
+			};
 			var layer = 'november' + type;
 			map.eachLayer(function (layer) {
 						map.removeLayer(layer);
 				});
-			map.addLayer(layer);
+			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+map.addLayer(eval(layer));
 		});
 		$("#Dec").click(function() {
-			var type = 'All';
-			if($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) type = "Contraband";
-			else if($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) type = "Search";
+			if ($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) {
+			    var type = "Search"
+			} else if ($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) {
+			    var type = "Contraband"
+			} else {
+			    var type = 'All'
+			};
 			var layer = 'december' + type;
 			map.eachLayer(function (layer) {
 						map.removeLayer(layer);
 				});
-			map.addLayer(layer);
+			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+map.addLayer(eval(layer));
 		});
 		$("#Full").click(function() {
-			var type = 'All';
-			if($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) type = "Contraband";
-			else if($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) type = "Search";
+			if ($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) {
+			    var type = "Search"
+			} else if ($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) {
+			    var type = "Contraband"
+			} else {
+			    var type = 'all'
+			};
 			var layer = type + 'Data';
 			map.eachLayer(function (layer) {
 						map.removeLayer(layer);
 				});
-			map.addLayer(layer);
+			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+map.addLayer(eval(layer));
 		});
 	});
