@@ -16,7 +16,7 @@ var options = {
     weight: 2,
   };
 
-var dallas = $.getJSON("data/dallas3.js");
+var dallas = $.getJSON("data/dallas3.geojson");
 dallas.then(function(data) {
 		var contrabandData = L.geoJson(data, {
 			filter: function(feature, layer) {
@@ -306,7 +306,7 @@ dallas.then(function(data) {
 	        }
 	    });
 
-			var januarySearch = L.geoJson(search, {
+			var januarySearch = L.geoJson(searchData, {
 	        filter: function(feature, layer) {
 							return feature.properties.stop_date.includes("2015-01");
 	        },
@@ -340,7 +340,7 @@ dallas.then(function(data) {
 		            });
 		        }
 		    });
-			var februarySearch = L.geoJson(search, {
+			var februarySearch = L.geoJson(searchData, {
 	        filter: function(feature, layer) {
 							return feature.properties.stop_date.includes("2015-02");
 	        },
@@ -362,7 +362,7 @@ dallas.then(function(data) {
 		            });
 		        }
 		    });
-			var marchSearch = L.geoJson(search, {
+			var marchSearch = L.geoJson(searchData, {
 	        filter: function(feature, layer) {
 							return feature.properties.stop_date.includes("2015-03");
 	        },
@@ -384,7 +384,7 @@ dallas.then(function(data) {
 		            });
 		        }
 		    });
-			var aprilSearch = L.geoJson(search, {
+			var aprilSearch = L.geoJson(searchData, {
 	        filter: function(feature, layer) {
 							return feature.properties.stop_date.includes("2015-04");
 	        },
@@ -406,7 +406,7 @@ dallas.then(function(data) {
 		            });
 		        }
 		    });
-			var maySearch = L.geoJson(search, {
+			var maySearch = L.geoJson(searchData, {
 	        filter: function(feature, layer) {
 							return feature.properties.stop_date.includes("2015-05");
 	        },
@@ -428,7 +428,7 @@ dallas.then(function(data) {
 		            });
 		        }
 		    });
-			var juneSearch = L.geoJson(search, {
+			var juneSearch = L.geoJson(searchData, {
 	        filter: function(feature, layer) {
 							return feature.properties.stop_date.includes("2015-06");
 	        },
@@ -450,7 +450,7 @@ dallas.then(function(data) {
 		            });
 		        }
 		    });
-			var julySearch = L.geoJson(search, {
+			var julySearch = L.geoJson(searchData, {
 	        filter: function(feature, layer) {
 							return feature.properties.stop_date.includes("2015-07");
 	        },
@@ -472,7 +472,7 @@ dallas.then(function(data) {
 		            });
 		        }
 		    });
-			var augustSearch = L.geoJson(search, {
+			var augustSearch = L.geoJson(searchData, {
 	        filter: function(feature, layer) {
 							return feature.properties.stop_date.includes("2015-08");
 	        },
@@ -494,7 +494,7 @@ dallas.then(function(data) {
 		            });
 		        }
 		    });
-			var septemberSearch = L.geoJson(search, {
+			var septemberSearch = L.geoJson(searchData, {
 	        filter: function(feature, layer) {
 							return feature.properties.stop_date.includes("2015-09");
 	        },
@@ -516,7 +516,7 @@ dallas.then(function(data) {
 		            });
 		        }
 		    });
-			var octoberSearch = L.geoJson(search, {
+			var octoberSearch = L.geoJson(searchData, {
 	        filter: function(feature, layer) {
 							return feature.properties.stop_date.includes("2015-10");
 	        },
@@ -538,7 +538,7 @@ dallas.then(function(data) {
 		            });
 		        }
 		    });
-			var novemberSearch = L.geoJson(search, {
+			var novemberSearch = L.geoJson(searchData, {
 	        filter: function(feature, layer) {
 							return feature.properties.stop_date.includes("2015-11");
 	        },
@@ -560,7 +560,7 @@ dallas.then(function(data) {
 		            });
 		        }
 		    });
-			var decemberSearch = L.geoJson(search, {
+			var decemberSearch = L.geoJson(searchData, {
 	        filter: function(feature, layer) {
 							return feature.properties.stop_date.includes("2015-12");
 	        },
@@ -583,7 +583,7 @@ dallas.then(function(data) {
 		        }
 		    });
 
-				var januaryContraband = L.geoJson(contraband, {
+				var januaryContraband = L.geoJson(contrabandData, {
 		        filter: function(feature, layer) {
 								return feature.properties.stop_date.includes("2015-01");
 		        },
@@ -617,7 +617,7 @@ dallas.then(function(data) {
 			            });
 			        }
 			    });
-				var februaryContraband = L.geoJson(contraband, {
+				var februaryContraband = L.geoJson(contrabandData, {
 		        filter: function(feature, layer) {
 								return feature.properties.stop_date.includes("2015-02");
 		        },
@@ -639,7 +639,7 @@ dallas.then(function(data) {
 			            });
 			        }
 			    });
-				var marchContraband = L.geoJson(contraband, {
+				var marchContraband = L.geoJson(contrabandData, {
 		        filter: function(feature, layer) {
 								return feature.properties.stop_date.includes("2015-03");
 		        },
@@ -661,7 +661,7 @@ dallas.then(function(data) {
 			            });
 			        }
 			    });
-				var aprilContraband = L.geoJson(contraband, {
+				var aprilContraband = L.geoJson(contrabandData, {
 		        filter: function(feature, layer) {
 								return feature.properties.stop_date.includes("2015-04");
 		        },
@@ -683,7 +683,7 @@ dallas.then(function(data) {
 			            });
 			        }
 			    });
-				var mayContraband = L.geoJson(contraband, {
+				var mayContraband = L.geoJson(contrabandData, {
 		        filter: function(feature, layer) {
 								return feature.properties.stop_date.includes("2015-05");
 		        },
@@ -705,7 +705,7 @@ dallas.then(function(data) {
 			            });
 			        }
 			    });
-				var juneContraband = L.geoJson(contraband, {
+				var juneContraband = L.geoJson(contrabandData, {
 		        filter: function(feature, layer) {
 								return feature.properties.stop_date.includes("2015-06");
 		        },
@@ -727,7 +727,7 @@ dallas.then(function(data) {
 			            });
 			        }
 			    });
-				var julyContraband = L.geoJson(contraband, {
+				var julyContraband = L.geoJson(contrabandData, {
 		        filter: function(feature, layer) {
 								return feature.properties.stop_date.includes("2015-07");
 		        },
@@ -749,7 +749,7 @@ dallas.then(function(data) {
 			            });
 			        }
 			    });
-				var augustContraband = L.geoJson(contraband, {
+				var augustContraband = L.geoJson(contrabandData, {
 		        filter: function(feature, layer) {
 								return feature.properties.stop_date.includes("2015-08");
 		        },
@@ -771,7 +771,7 @@ dallas.then(function(data) {
 			            });
 			        }
 			    });
-				var septemberContraband = L.geoJson(contraband, {
+				var septemberContraband = L.geoJson(contrabandData, {
 		        filter: function(feature, layer) {
 								return feature.properties.stop_date.includes("2015-09");
 		        },
@@ -793,7 +793,7 @@ dallas.then(function(data) {
 			            });
 			        }
 			    });
-				var octoberContraband = L.geoJson(contraband, {
+				var octoberContraband = L.geoJson(contrabandData, {
 		        filter: function(feature, layer) {
 								return feature.properties.stop_date.includes("2015-10");
 		        },
@@ -815,7 +815,7 @@ dallas.then(function(data) {
 			            });
 			        }
 			    });
-				var novemberContraband = L.geoJson(contraband, {
+				var novemberContraband = L.geoJson(contrabandData, {
 		        filter: function(feature, layer) {
 								return feature.properties.stop_date.includes("2015-11");
 		        },
@@ -837,7 +837,7 @@ dallas.then(function(data) {
 			            });
 			        }
 			    });
-				var decemberContraband = L.geoJson(contraband, {
+				var decemberContraband = L.geoJson(contrabandData, {
 		        filter: function(feature, layer) {
 								return feature.properties.stop_date.includes("2015-12");
 		        },
