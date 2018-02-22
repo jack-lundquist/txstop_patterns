@@ -16,511 +16,993 @@ var options = {
     weight: 2,
   };
 
-var dallas = $.getJSON("data/dallas3.geojson");
+var dallas = $.getJSON("data/dallas3.js");
 dallas.then(function(data) {
-    var allStops = L.geoJson(data);
-    var january = L.geoJson(data, {
+		var contrabandData = L.geoJson(data, {
+			filter: function(feature, layer) {
+				return feature.properties.contraband_found == 1;
+			}
+		});
+		var searchData = L.geoJson(data, {
+			filter: function(feature, layer) {
+				return feature.properties.search_conducted == 1;
+			}
+		});
+		var allData = L.geoJson(data);
+    var januaryAll = L.geoJson(data, {
         filter: function(feature, layer) {
 						return feature.properties.stop_date.includes("2015-01");
         },
         pointToLayer: function(feature, latlng) {
-  var raceColor = 'black';
-  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
-  if (feature.properties.driver_race === 'White') raceColor = 'green';
-  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
-  var options = {
-      radius: 6,
-      opacity: 1,
-      fillColor: raceColor,
-      fillOpacity: 0.9,
-      color: raceColor,
-      weight: 2,
-    };
-					var raceColor = 'black';
-					if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
-					if (feature.properties.driver_race === 'White') raceColor = 'green';
-					if (feature.properties.driver_race === 'Black') raceColor = 'orange';
-					var options = {
-							radius: 6,
-							opacity: 1,
-							fillColor: raceColor,
-							fillOpacity: 0.9,
-							color: raceColor,
-							weight: 2,
-						};
-						return L.circleMarker(latlng, options).on('click', function() {
-                this.bindPopup(feature.properties.violation).openPopup();
-            });
-        }
-    });
-		var february = L.geoJson(data, {
+	  var raceColor = 'black';
+	  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+	  if (feature.properties.driver_race === 'White') raceColor = 'green';
+	  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+	  var options = {
+	      radius: 6,
+	      opacity: 1,
+	      fillColor: raceColor,
+	      fillOpacity: 0.9,
+	      color: raceColor,
+	      weight: 2,
+	    };
+						var raceColor = 'black';
+						if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+						if (feature.properties.driver_race === 'White') raceColor = 'green';
+						if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+						var options = {
+								radius: 6,
+								opacity: 1,
+								fillColor: raceColor,
+								fillOpacity: 0.9,
+								color: raceColor,
+								weight: 2,
+							};
+							return L.circleMarker(latlng, options).on('click', function() {
+	                this.bindPopup(feature.properties.violation).openPopup();
+	            });
+	        }
+	    });
+		var februaryAll = L.geoJson(data, {
         filter: function(feature, layer) {
 						return feature.properties.stop_date.includes("2015-02");
         },
         pointToLayer: function(feature, latlng) {
-  var raceColor = 'black';
-  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
-  if (feature.properties.driver_race === 'White') raceColor = 'green';
-  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
-  var options = {
-      radius: 6,
-      opacity: 1,
-      fillColor: raceColor,
-      fillOpacity: 0.9,
-      color: raceColor,
-      weight: 2,
-    };
-            return L.circleMarker(latlng, options).on('click', function() {
-                this.bindPopup(feature.properties.violation).openPopup();
-            });
-        }
-    });
-		var march = L.geoJson(data, {
+	  var raceColor = 'black';
+	  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+	  if (feature.properties.driver_race === 'White') raceColor = 'green';
+	  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+	  var options = {
+	      radius: 6,
+	      opacity: 1,
+	      fillColor: raceColor,
+	      fillOpacity: 0.9,
+	      color: raceColor,
+	      weight: 2,
+	    };
+	            return L.circleMarker(latlng, options).on('click', function() {
+	                this.bindPopup(feature.properties.violation).openPopup();
+	            });
+	        }
+	    });
+		var marchAll = L.geoJson(data, {
         filter: function(feature, layer) {
 						return feature.properties.stop_date.includes("2015-03");
         },
         pointToLayer: function(feature, latlng) {
-  var raceColor = 'black';
-  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
-  if (feature.properties.driver_race === 'White') raceColor = 'green';
-  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
-  var options = {
-      radius: 6,
-      opacity: 1,
-      fillColor: raceColor,
-      fillOpacity: 0.9,
-      color: raceColor,
-      weight: 2,
-    };
-            return L.circleMarker(latlng, options).on('click', function() {
-                this.bindPopup(feature.properties.violation).openPopup();
-            });
-        }
-    });
-		var april = L.geoJson(data, {
+	  var raceColor = 'black';
+	  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+	  if (feature.properties.driver_race === 'White') raceColor = 'green';
+	  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+	  var options = {
+	      radius: 6,
+	      opacity: 1,
+	      fillColor: raceColor,
+	      fillOpacity: 0.9,
+	      color: raceColor,
+	      weight: 2,
+	    };
+	            return L.circleMarker(latlng, options).on('click', function() {
+	                this.bindPopup(feature.properties.violation).openPopup();
+	            });
+	        }
+	    });
+		var aprilAll = L.geoJson(data, {
         filter: function(feature, layer) {
 						return feature.properties.stop_date.includes("2015-04");
         },
         pointToLayer: function(feature, latlng) {
-  var raceColor = 'black';
-  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
-  if (feature.properties.driver_race === 'White') raceColor = 'green';
-  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
-  var options = {
-      radius: 6,
-      opacity: 1,
-      fillColor: raceColor,
-      fillOpacity: 0.9,
-      color: raceColor,
-      weight: 2,
-    };
-            return L.circleMarker(latlng, options).on('click', function() {
-                this.bindPopup(feature.properties.violation).openPopup();
-            });
-        }
-    });
-		var may = L.geoJson(data, {
+	  var raceColor = 'black';
+	  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+	  if (feature.properties.driver_race === 'White') raceColor = 'green';
+	  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+	  var options = {
+	      radius: 6,
+	      opacity: 1,
+	      fillColor: raceColor,
+	      fillOpacity: 0.9,
+	      color: raceColor,
+	      weight: 2,
+	    };
+	            return L.circleMarker(latlng, options).on('click', function() {
+	                this.bindPopup(feature.properties.violation).openPopup();
+	            });
+	        }
+	    });
+		var mayAll = L.geoJson(data, {
         filter: function(feature, layer) {
 						return feature.properties.stop_date.includes("2015-05");
         },
         pointToLayer: function(feature, latlng) {
-  var raceColor = 'black';
-  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
-  if (feature.properties.driver_race === 'White') raceColor = 'green';
-  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
-  var options = {
-      radius: 6,
-      opacity: 1,
-      fillColor: raceColor,
-      fillOpacity: 0.9,
-      color: raceColor,
-      weight: 2,
-    };
-            return L.circleMarker(latlng, options).on('click', function() {
-                this.bindPopup(feature.properties.violation).openPopup();
-            });
-        }
-    });
-		var june = L.geoJson(data, {
+	  var raceColor = 'black';
+	  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+	  if (feature.properties.driver_race === 'White') raceColor = 'green';
+	  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+	  var options = {
+	      radius: 6,
+	      opacity: 1,
+	      fillColor: raceColor,
+	      fillOpacity: 0.9,
+	      color: raceColor,
+	      weight: 2,
+	    };
+	            return L.circleMarker(latlng, options).on('click', function() {
+	                this.bindPopup(feature.properties.violation).openPopup();
+	            });
+	        }
+	    });
+		var juneAll = L.geoJson(data, {
         filter: function(feature, layer) {
 						return feature.properties.stop_date.includes("2015-06");
         },
         pointToLayer: function(feature, latlng) {
-  var raceColor = 'black';
-  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
-  if (feature.properties.driver_race === 'White') raceColor = 'green';
-  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
-  var options = {
-      radius: 6,
-      opacity: 1,
-      fillColor: raceColor,
-      fillOpacity: 0.9,
-      color: raceColor,
-      weight: 2,
-    };
-            return L.circleMarker(latlng, options).on('click', function() {
-                this.bindPopup(feature.properties.violation).openPopup();
-            });
-        }
-    });
-		var july = L.geoJson(data, {
+	  var raceColor = 'black';
+	  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+	  if (feature.properties.driver_race === 'White') raceColor = 'green';
+	  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+	  var options = {
+	      radius: 6,
+	      opacity: 1,
+	      fillColor: raceColor,
+	      fillOpacity: 0.9,
+	      color: raceColor,
+	      weight: 2,
+	    };
+	            return L.circleMarker(latlng, options).on('click', function() {
+	                this.bindPopup(feature.properties.violation).openPopup();
+	            });
+	        }
+	    });
+		var julyAll = L.geoJson(data, {
         filter: function(feature, layer) {
 						return feature.properties.stop_date.includes("2015-07");
         },
         pointToLayer: function(feature, latlng) {
-  var raceColor = 'black';
-  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
-  if (feature.properties.driver_race === 'White') raceColor = 'green';
-  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
-  var options = {
-      radius: 6,
-      opacity: 1,
-      fillColor: raceColor,
-      fillOpacity: 0.9,
-      color: raceColor,
-      weight: 2,
-    };
-            return L.circleMarker(latlng, options).on('click', function() {
-                this.bindPopup(feature.properties.violation).openPopup();
-            });
-        }
-    });
-		var august = L.geoJson(data, {
+	  var raceColor = 'black';
+	  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+	  if (feature.properties.driver_race === 'White') raceColor = 'green';
+	  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+	  var options = {
+	      radius: 6,
+	      opacity: 1,
+	      fillColor: raceColor,
+	      fillOpacity: 0.9,
+	      color: raceColor,
+	      weight: 2,
+	    };
+	            return L.circleMarker(latlng, options).on('click', function() {
+	                this.bindPopup(feature.properties.violation).openPopup();
+	            });
+	        }
+	    });
+		var augustAll = L.geoJson(data, {
         filter: function(feature, layer) {
 						return feature.properties.stop_date.includes("2015-08");
         },
         pointToLayer: function(feature, latlng) {
-  var raceColor = 'black';
-  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
-  if (feature.properties.driver_race === 'White') raceColor = 'green';
-  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
-  var options = {
-      radius: 6,
-      opacity: 1,
-      fillColor: raceColor,
-      fillOpacity: 0.9,
-      color: raceColor,
-      weight: 2,
-    };
-            return L.circleMarker(latlng, options).on('click', function() {
-                this.bindPopup(feature.properties.violation).openPopup();
-            });
-        }
-    });
-		var september = L.geoJson(data, {
+	  var raceColor = 'black';
+	  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+	  if (feature.properties.driver_race === 'White') raceColor = 'green';
+	  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+	  var options = {
+	      radius: 6,
+	      opacity: 1,
+	      fillColor: raceColor,
+	      fillOpacity: 0.9,
+	      color: raceColor,
+	      weight: 2,
+	    };
+	            return L.circleMarker(latlng, options).on('click', function() {
+	                this.bindPopup(feature.properties.violation).openPopup();
+	            });
+	        }
+	    });
+		var septemberAll = L.geoJson(data, {
         filter: function(feature, layer) {
 						return feature.properties.stop_date.includes("2015-09");
         },
         pointToLayer: function(feature, latlng) {
-  var raceColor = 'black';
-  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
-  if (feature.properties.driver_race === 'White') raceColor = 'green';
-  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
-  var options = {
-      radius: 6,
-      opacity: 1,
-      fillColor: raceColor,
-      fillOpacity: 0.9,
-      color: raceColor,
-      weight: 2,
-    };
-            return L.circleMarker(latlng, options).on('click', function() {
-                this.bindPopup(feature.properties.violation).openPopup();
-            });
-        }
-    });
-		var october = L.geoJson(data, {
+	  var raceColor = 'black';
+	  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+	  if (feature.properties.driver_race === 'White') raceColor = 'green';
+	  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+	  var options = {
+	      radius: 6,
+	      opacity: 1,
+	      fillColor: raceColor,
+	      fillOpacity: 0.9,
+	      color: raceColor,
+	      weight: 2,
+	    };
+	            return L.circleMarker(latlng, options).on('click', function() {
+	                this.bindPopup(feature.properties.violation).openPopup();
+	            });
+	        }
+	    });
+		var octoberAll = L.geoJson(data, {
         filter: function(feature, layer) {
 						return feature.properties.stop_date.includes("2015-10");
         },
         pointToLayer: function(feature, latlng) {
-  var raceColor = 'black';
-  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
-  if (feature.properties.driver_race === 'White') raceColor = 'green';
-  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
-  var options = {
-      radius: 6,
-      opacity: 1,
-      fillColor: raceColor,
-      fillOpacity: 0.9,
-      color: raceColor,
-      weight: 2,
-    };
-            return L.circleMarker(latlng, options).on('click', function() {
-                this.bindPopup(feature.properties.violation).openPopup();
-            });
-        }
-    });
-		var november = L.geoJson(data, {
+	  var raceColor = 'black';
+	  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+	  if (feature.properties.driver_race === 'White') raceColor = 'green';
+	  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+	  var options = {
+	      radius: 6,
+	      opacity: 1,
+	      fillColor: raceColor,
+	      fillOpacity: 0.9,
+	      color: raceColor,
+	      weight: 2,
+	    };
+	            return L.circleMarker(latlng, options).on('click', function() {
+	                this.bindPopup(feature.properties.violation).openPopup();
+	            });
+	        }
+	    });
+		var novemberAll = L.geoJson(data, {
         filter: function(feature, layer) {
 						return feature.properties.stop_date.includes("2015-11");
         },
         pointToLayer: function(feature, latlng) {
-  var raceColor = 'black';
-  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
-  if (feature.properties.driver_race === 'White') raceColor = 'green';
-  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
-  var options = {
-      radius: 6,
-      opacity: 1,
-      fillColor: raceColor,
-      fillOpacity: 0.9,
-      color: raceColor,
-      weight: 2,
-    };
-            return L.circleMarker(latlng, options).on('click', function() {
-                this.bindPopup(feature.properties.violation).openPopup();
-            });
-        }
-    });
-		var december = L.geoJson(data, {
+	  var raceColor = 'black';
+	  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+	  if (feature.properties.driver_race === 'White') raceColor = 'green';
+	  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+	  var options = {
+	      radius: 6,
+	      opacity: 1,
+	      fillColor: raceColor,
+	      fillOpacity: 0.9,
+	      color: raceColor,
+	      weight: 2,
+	    };
+	            return L.circleMarker(latlng, options).on('click', function() {
+	                this.bindPopup(feature.properties.violation).openPopup();
+	            });
+	        }
+	    });
+		var decemberAll = L.geoJson(data, {
         filter: function(feature, layer) {
 						return feature.properties.stop_date.includes("2015-12");
         },
         pointToLayer: function(feature, latlng) {
-  var raceColor = 'black';
-  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
-  if (feature.properties.driver_race === 'White') raceColor = 'green';
-  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
-  var options = {
-      radius: 6,
-      opacity: 1,
-      fillColor: raceColor,
-      fillOpacity: 0.9,
-      color: raceColor,
-      weight: 2,
-    };
-            return L.circleMarker(latlng, options).on('click', function() {
-                this.bindPopup(feature.properties.violation).openPopup();
-            });
-        }
-    });
+	  var raceColor = 'black';
+	  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+	  if (feature.properties.driver_race === 'White') raceColor = 'green';
+	  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+	  var options = {
+	      radius: 6,
+	      opacity: 1,
+	      fillColor: raceColor,
+	      fillOpacity: 0.9,
+	      color: raceColor,
+	      weight: 2,
+	    };
+	            return L.circleMarker(latlng, options).on('click', function() {
+	                this.bindPopup(feature.properties.violation).openPopup();
+	            });
+	        }
+	    });
+
+			var januarySearch = L.geoJson(search, {
+	        filter: function(feature, layer) {
+							return feature.properties.stop_date.includes("2015-01");
+	        },
+	        pointToLayer: function(feature, latlng) {
+		  var raceColor = 'black';
+		  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+		  if (feature.properties.driver_race === 'White') raceColor = 'green';
+		  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+		  var options = {
+		      radius: 6,
+		      opacity: 1,
+		      fillColor: raceColor,
+		      fillOpacity: 0.9,
+		      color: raceColor,
+		      weight: 2,
+		    };
+							var raceColor = 'black';
+							if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+							if (feature.properties.driver_race === 'White') raceColor = 'green';
+							if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+							var options = {
+									radius: 6,
+									opacity: 1,
+									fillColor: raceColor,
+									fillOpacity: 0.9,
+									color: raceColor,
+									weight: 2,
+								};
+								return L.circleMarker(latlng, options).on('click', function() {
+		                this.bindPopup(feature.properties.violation).openPopup();
+		            });
+		        }
+		    });
+			var februarySearch = L.geoJson(search, {
+	        filter: function(feature, layer) {
+							return feature.properties.stop_date.includes("2015-02");
+	        },
+	        pointToLayer: function(feature, latlng) {
+		  var raceColor = 'black';
+		  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+		  if (feature.properties.driver_race === 'White') raceColor = 'green';
+		  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+		  var options = {
+		      radius: 6,
+		      opacity: 1,
+		      fillColor: raceColor,
+		      fillOpacity: 0.9,
+		      color: raceColor,
+		      weight: 2,
+		    };
+		            return L.circleMarker(latlng, options).on('click', function() {
+		                this.bindPopup(feature.properties.violation).openPopup();
+		            });
+		        }
+		    });
+			var marchSearch = L.geoJson(search, {
+	        filter: function(feature, layer) {
+							return feature.properties.stop_date.includes("2015-03");
+	        },
+	        pointToLayer: function(feature, latlng) {
+		  var raceColor = 'black';
+		  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+		  if (feature.properties.driver_race === 'White') raceColor = 'green';
+		  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+		  var options = {
+		      radius: 6,
+		      opacity: 1,
+		      fillColor: raceColor,
+		      fillOpacity: 0.9,
+		      color: raceColor,
+		      weight: 2,
+		    };
+		            return L.circleMarker(latlng, options).on('click', function() {
+		                this.bindPopup(feature.properties.violation).openPopup();
+		            });
+		        }
+		    });
+			var aprilSearch = L.geoJson(search, {
+	        filter: function(feature, layer) {
+							return feature.properties.stop_date.includes("2015-04");
+	        },
+	        pointToLayer: function(feature, latlng) {
+		  var raceColor = 'black';
+		  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+		  if (feature.properties.driver_race === 'White') raceColor = 'green';
+		  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+		  var options = {
+		      radius: 6,
+		      opacity: 1,
+		      fillColor: raceColor,
+		      fillOpacity: 0.9,
+		      color: raceColor,
+		      weight: 2,
+		    };
+		            return L.circleMarker(latlng, options).on('click', function() {
+		                this.bindPopup(feature.properties.violation).openPopup();
+		            });
+		        }
+		    });
+			var maySearch = L.geoJson(search, {
+	        filter: function(feature, layer) {
+							return feature.properties.stop_date.includes("2015-05");
+	        },
+	        pointToLayer: function(feature, latlng) {
+		  var raceColor = 'black';
+		  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+		  if (feature.properties.driver_race === 'White') raceColor = 'green';
+		  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+		  var options = {
+		      radius: 6,
+		      opacity: 1,
+		      fillColor: raceColor,
+		      fillOpacity: 0.9,
+		      color: raceColor,
+		      weight: 2,
+		    };
+		            return L.circleMarker(latlng, options).on('click', function() {
+		                this.bindPopup(feature.properties.violation).openPopup();
+		            });
+		        }
+		    });
+			var juneSearch = L.geoJson(search, {
+	        filter: function(feature, layer) {
+							return feature.properties.stop_date.includes("2015-06");
+	        },
+	        pointToLayer: function(feature, latlng) {
+		  var raceColor = 'black';
+		  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+		  if (feature.properties.driver_race === 'White') raceColor = 'green';
+		  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+		  var options = {
+		      radius: 6,
+		      opacity: 1,
+		      fillColor: raceColor,
+		      fillOpacity: 0.9,
+		      color: raceColor,
+		      weight: 2,
+		    };
+		            return L.circleMarker(latlng, options).on('click', function() {
+		                this.bindPopup(feature.properties.violation).openPopup();
+		            });
+		        }
+		    });
+			var julySearch = L.geoJson(search, {
+	        filter: function(feature, layer) {
+							return feature.properties.stop_date.includes("2015-07");
+	        },
+	        pointToLayer: function(feature, latlng) {
+		  var raceColor = 'black';
+		  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+		  if (feature.properties.driver_race === 'White') raceColor = 'green';
+		  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+		  var options = {
+		      radius: 6,
+		      opacity: 1,
+		      fillColor: raceColor,
+		      fillOpacity: 0.9,
+		      color: raceColor,
+		      weight: 2,
+		    };
+		            return L.circleMarker(latlng, options).on('click', function() {
+		                this.bindPopup(feature.properties.violation).openPopup();
+		            });
+		        }
+		    });
+			var augustSearch = L.geoJson(search, {
+	        filter: function(feature, layer) {
+							return feature.properties.stop_date.includes("2015-08");
+	        },
+	        pointToLayer: function(feature, latlng) {
+		  var raceColor = 'black';
+		  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+		  if (feature.properties.driver_race === 'White') raceColor = 'green';
+		  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+		  var options = {
+		      radius: 6,
+		      opacity: 1,
+		      fillColor: raceColor,
+		      fillOpacity: 0.9,
+		      color: raceColor,
+		      weight: 2,
+		    };
+		            return L.circleMarker(latlng, options).on('click', function() {
+		                this.bindPopup(feature.properties.violation).openPopup();
+		            });
+		        }
+		    });
+			var septemberSearch = L.geoJson(search, {
+	        filter: function(feature, layer) {
+							return feature.properties.stop_date.includes("2015-09");
+	        },
+	        pointToLayer: function(feature, latlng) {
+		  var raceColor = 'black';
+		  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+		  if (feature.properties.driver_race === 'White') raceColor = 'green';
+		  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+		  var options = {
+		      radius: 6,
+		      opacity: 1,
+		      fillColor: raceColor,
+		      fillOpacity: 0.9,
+		      color: raceColor,
+		      weight: 2,
+		    };
+		            return L.circleMarker(latlng, options).on('click', function() {
+		                this.bindPopup(feature.properties.violation).openPopup();
+		            });
+		        }
+		    });
+			var octoberSearch = L.geoJson(search, {
+	        filter: function(feature, layer) {
+							return feature.properties.stop_date.includes("2015-10");
+	        },
+	        pointToLayer: function(feature, latlng) {
+		  var raceColor = 'black';
+		  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+		  if (feature.properties.driver_race === 'White') raceColor = 'green';
+		  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+		  var options = {
+		      radius: 6,
+		      opacity: 1,
+		      fillColor: raceColor,
+		      fillOpacity: 0.9,
+		      color: raceColor,
+		      weight: 2,
+		    };
+		            return L.circleMarker(latlng, options).on('click', function() {
+		                this.bindPopup(feature.properties.violation).openPopup();
+		            });
+		        }
+		    });
+			var novemberSearch = L.geoJson(search, {
+	        filter: function(feature, layer) {
+							return feature.properties.stop_date.includes("2015-11");
+	        },
+	        pointToLayer: function(feature, latlng) {
+		  var raceColor = 'black';
+		  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+		  if (feature.properties.driver_race === 'White') raceColor = 'green';
+		  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+		  var options = {
+		      radius: 6,
+		      opacity: 1,
+		      fillColor: raceColor,
+		      fillOpacity: 0.9,
+		      color: raceColor,
+		      weight: 2,
+		    };
+		            return L.circleMarker(latlng, options).on('click', function() {
+		                this.bindPopup(feature.properties.violation).openPopup();
+		            });
+		        }
+		    });
+			var decemberSearch = L.geoJson(search, {
+	        filter: function(feature, layer) {
+							return feature.properties.stop_date.includes("2015-12");
+	        },
+	        pointToLayer: function(feature, latlng) {
+		  var raceColor = 'black';
+		  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+		  if (feature.properties.driver_race === 'White') raceColor = 'green';
+		  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+		  var options = {
+		      radius: 6,
+		      opacity: 1,
+		      fillColor: raceColor,
+		      fillOpacity: 0.9,
+		      color: raceColor,
+		      weight: 2,
+		    };
+		            return L.circleMarker(latlng, options).on('click', function() {
+		                this.bindPopup(feature.properties.violation).openPopup();
+		            });
+		        }
+		    });
+
+				var januaryContraband = L.geoJson(contraband, {
+		        filter: function(feature, layer) {
+								return feature.properties.stop_date.includes("2015-01");
+		        },
+		        pointToLayer: function(feature, latlng) {
+			  var raceColor = 'black';
+			  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+			  if (feature.properties.driver_race === 'White') raceColor = 'green';
+			  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+			  var options = {
+			      radius: 6,
+			      opacity: 1,
+			      fillColor: raceColor,
+			      fillOpacity: 0.9,
+			      color: raceColor,
+			      weight: 2,
+			    };
+								var raceColor = 'black';
+								if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+								if (feature.properties.driver_race === 'White') raceColor = 'green';
+								if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+								var options = {
+										radius: 6,
+										opacity: 1,
+										fillColor: raceColor,
+										fillOpacity: 0.9,
+										color: raceColor,
+										weight: 2,
+									};
+									return L.circleMarker(latlng, options).on('click', function() {
+			                this.bindPopup(feature.properties.violation).openPopup();
+			            });
+			        }
+			    });
+				var februaryContraband = L.geoJson(contraband, {
+		        filter: function(feature, layer) {
+								return feature.properties.stop_date.includes("2015-02");
+		        },
+		        pointToLayer: function(feature, latlng) {
+			  var raceColor = 'black';
+			  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+			  if (feature.properties.driver_race === 'White') raceColor = 'green';
+			  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+			  var options = {
+			      radius: 6,
+			      opacity: 1,
+			      fillColor: raceColor,
+			      fillOpacity: 0.9,
+			      color: raceColor,
+			      weight: 2,
+			    };
+			            return L.circleMarker(latlng, options).on('click', function() {
+			                this.bindPopup(feature.properties.violation).openPopup();
+			            });
+			        }
+			    });
+				var marchContraband = L.geoJson(contraband, {
+		        filter: function(feature, layer) {
+								return feature.properties.stop_date.includes("2015-03");
+		        },
+		        pointToLayer: function(feature, latlng) {
+			  var raceColor = 'black';
+			  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+			  if (feature.properties.driver_race === 'White') raceColor = 'green';
+			  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+			  var options = {
+			      radius: 6,
+			      opacity: 1,
+			      fillColor: raceColor,
+			      fillOpacity: 0.9,
+			      color: raceColor,
+			      weight: 2,
+			    };
+			            return L.circleMarker(latlng, options).on('click', function() {
+			                this.bindPopup(feature.properties.violation).openPopup();
+			            });
+			        }
+			    });
+				var aprilContraband = L.geoJson(contraband, {
+		        filter: function(feature, layer) {
+								return feature.properties.stop_date.includes("2015-04");
+		        },
+		        pointToLayer: function(feature, latlng) {
+			  var raceColor = 'black';
+			  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+			  if (feature.properties.driver_race === 'White') raceColor = 'green';
+			  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+			  var options = {
+			      radius: 6,
+			      opacity: 1,
+			      fillColor: raceColor,
+			      fillOpacity: 0.9,
+			      color: raceColor,
+			      weight: 2,
+			    };
+			            return L.circleMarker(latlng, options).on('click', function() {
+			                this.bindPopup(feature.properties.violation).openPopup();
+			            });
+			        }
+			    });
+				var mayContraband = L.geoJson(contraband, {
+		        filter: function(feature, layer) {
+								return feature.properties.stop_date.includes("2015-05");
+		        },
+		        pointToLayer: function(feature, latlng) {
+			  var raceColor = 'black';
+			  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+			  if (feature.properties.driver_race === 'White') raceColor = 'green';
+			  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+			  var options = {
+			      radius: 6,
+			      opacity: 1,
+			      fillColor: raceColor,
+			      fillOpacity: 0.9,
+			      color: raceColor,
+			      weight: 2,
+			    };
+			            return L.circleMarker(latlng, options).on('click', function() {
+			                this.bindPopup(feature.properties.violation).openPopup();
+			            });
+			        }
+			    });
+				var juneContraband = L.geoJson(contraband, {
+		        filter: function(feature, layer) {
+								return feature.properties.stop_date.includes("2015-06");
+		        },
+		        pointToLayer: function(feature, latlng) {
+			  var raceColor = 'black';
+			  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+			  if (feature.properties.driver_race === 'White') raceColor = 'green';
+			  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+			  var options = {
+			      radius: 6,
+			      opacity: 1,
+			      fillColor: raceColor,
+			      fillOpacity: 0.9,
+			      color: raceColor,
+			      weight: 2,
+			    };
+			            return L.circleMarker(latlng, options).on('click', function() {
+			                this.bindPopup(feature.properties.violation).openPopup();
+			            });
+			        }
+			    });
+				var julyContraband = L.geoJson(contraband, {
+		        filter: function(feature, layer) {
+								return feature.properties.stop_date.includes("2015-07");
+		        },
+		        pointToLayer: function(feature, latlng) {
+			  var raceColor = 'black';
+			  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+			  if (feature.properties.driver_race === 'White') raceColor = 'green';
+			  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+			  var options = {
+			      radius: 6,
+			      opacity: 1,
+			      fillColor: raceColor,
+			      fillOpacity: 0.9,
+			      color: raceColor,
+			      weight: 2,
+			    };
+			            return L.circleMarker(latlng, options).on('click', function() {
+			                this.bindPopup(feature.properties.violation).openPopup();
+			            });
+			        }
+			    });
+				var augustContraband = L.geoJson(contraband, {
+		        filter: function(feature, layer) {
+								return feature.properties.stop_date.includes("2015-08");
+		        },
+		        pointToLayer: function(feature, latlng) {
+			  var raceColor = 'black';
+			  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+			  if (feature.properties.driver_race === 'White') raceColor = 'green';
+			  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+			  var options = {
+			      radius: 6,
+			      opacity: 1,
+			      fillColor: raceColor,
+			      fillOpacity: 0.9,
+			      color: raceColor,
+			      weight: 2,
+			    };
+			            return L.circleMarker(latlng, options).on('click', function() {
+			                this.bindPopup(feature.properties.violation).openPopup();
+			            });
+			        }
+			    });
+				var septemberContraband = L.geoJson(contraband, {
+		        filter: function(feature, layer) {
+								return feature.properties.stop_date.includes("2015-09");
+		        },
+		        pointToLayer: function(feature, latlng) {
+			  var raceColor = 'black';
+			  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+			  if (feature.properties.driver_race === 'White') raceColor = 'green';
+			  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+			  var options = {
+			      radius: 6,
+			      opacity: 1,
+			      fillColor: raceColor,
+			      fillOpacity: 0.9,
+			      color: raceColor,
+			      weight: 2,
+			    };
+			            return L.circleMarker(latlng, options).on('click', function() {
+			                this.bindPopup(feature.properties.violation).openPopup();
+			            });
+			        }
+			    });
+				var octoberContraband = L.geoJson(contraband, {
+		        filter: function(feature, layer) {
+								return feature.properties.stop_date.includes("2015-10");
+		        },
+		        pointToLayer: function(feature, latlng) {
+			  var raceColor = 'black';
+			  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+			  if (feature.properties.driver_race === 'White') raceColor = 'green';
+			  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+			  var options = {
+			      radius: 6,
+			      opacity: 1,
+			      fillColor: raceColor,
+			      fillOpacity: 0.9,
+			      color: raceColor,
+			      weight: 2,
+			    };
+			            return L.circleMarker(latlng, options).on('click', function() {
+			                this.bindPopup(feature.properties.violation).openPopup();
+			            });
+			        }
+			    });
+				var novemberContraband = L.geoJson(contraband, {
+		        filter: function(feature, layer) {
+								return feature.properties.stop_date.includes("2015-11");
+		        },
+		        pointToLayer: function(feature, latlng) {
+			  var raceColor = 'black';
+			  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+			  if (feature.properties.driver_race === 'White') raceColor = 'green';
+			  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+			  var options = {
+			      radius: 6,
+			      opacity: 1,
+			      fillColor: raceColor,
+			      fillOpacity: 0.9,
+			      color: raceColor,
+			      weight: 2,
+			    };
+			            return L.circleMarker(latlng, options).on('click', function() {
+			                this.bindPopup(feature.properties.violation).openPopup();
+			            });
+			        }
+			    });
+				var decemberContraband = L.geoJson(contraband, {
+		        filter: function(feature, layer) {
+								return feature.properties.stop_date.includes("2015-12");
+		        },
+		        pointToLayer: function(feature, latlng) {
+			  var raceColor = 'black';
+			  if (feature.properties.driver_race === 'Asian') raceColor = 'purple';
+			  if (feature.properties.driver_race === 'White') raceColor = 'green';
+			  if (feature.properties.driver_race === 'Black') raceColor = 'orange';
+			  var options = {
+			      radius: 6,
+			      opacity: 1,
+			      fillColor: raceColor,
+			      fillOpacity: 0.9,
+			      color: raceColor,
+			      weight: 2,
+			    };
+			            return L.circleMarker(latlng, options).on('click', function() {
+			                this.bindPopup(feature.properties.violation).openPopup();
+			            });
+			        }
+			    });
     // map.fitBounds(allStops.getBounds(), {
     //     padding: [50, 50]
     // });
-		january.addTo(map);
-    february.addTo(map);
-		march.addTo(map);
-    april.addTo(map);
-		may.addTo(map);
-    june.addTo(map);
-		july.addTo(map);
-    august.addTo(map);
-		september.addTo(map);
-    october.addTo(map);
-		november.addTo(map);
-    december.addTo(map);
+		januaryAll.addTo(map);
+    februaryAll.addTo(map);
+		marchAll.addTo(map);
+    aprilAll.addTo(map);
+		mayAll.addTo(map);
+    juneAll.addTo(map);
+		julyAll.addTo(map);
+    augustAll.addTo(map);
+		septemberAll.addTo(map);
+    octoberAll.addTo(map);
+		novemberAll.addTo(map);
+    decemberAll.addTo(map);
     // The JavaScript below is new
     $("#Jan").click(function() {
-        map.removeLayer(january);
-				map.removeLayer(february);
-				map.removeLayer(march);
-				map.removeLayer(april);
-				map.removeLayer(may);
-				map.removeLayer(july);
-				map.removeLayer(august);
-				map.removeLayer(september);
-				map.removeLayer(october);
-				map.removeLayer(november);
-				map.removeLayer(december);
-				map.addLayer(january);
+				var type = 'All';
+				if($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) type = "Contraband";
+				else if($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) type = "Search";
+				var layer = 'january' + type;
+				map.eachLayer(function (layer) {
+					    map.removeLayer(layer);
+					});
+				map.addLayer(layer);
     });
 		$("#Feb").click(function() {
-        map.removeLayer(january);
-				map.removeLayer(february);
-				map.removeLayer(march);
-				map.removeLayer(april);
-				map.removeLayer(may);
-				map.removeLayer(july);
-				map.removeLayer(august);
-				map.removeLayer(september);
-				map.removeLayer(october);
-				map.removeLayer(november);
-				map.removeLayer(december);
-				map.addLayer(february);
+			var type = 'All';
+			if($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) type = "Contraband";
+			else if($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) type = "Search";
+			var layer = 'february' + type;
+			map.eachLayer(function (layer) {
+						map.removeLayer(layer);
+				});
+			map.addLayer(layer);
     });
 		$("#Mar").click(function() {
-        map.removeLayer(january);
-				map.removeLayer(february);
-				map.removeLayer(march);
-				map.removeLayer(april);
-				map.removeLayer(may);
-				map.removeLayer(july);
-				map.removeLayer(august);
-				map.removeLayer(september);
-				map.removeLayer(october);
-				map.removeLayer(november);
-				map.removeLayer(december);
-				map.addLayer(march);
+			var type = 'All';
+			if($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) type = "Contraband";
+			else if($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) type = "Search";
+			var layer = 'march' + type;
+			map.eachLayer(function (layer) {
+						map.removeLayer(layer);
+				});
+			map.addLayer(layer);
     });
 		$("#Apr").click(function() {
-        map.removeLayer(january);
-				map.removeLayer(february);
-				map.removeLayer(march);
-				map.removeLayer(april);
-				map.removeLayer(may);
-				map.removeLayer(july);
-				map.removeLayer(august);
-				map.removeLayer(september);
-				map.removeLayer(october);
-				map.removeLayer(november);
-				map.removeLayer(december);
-				map.addLayer(april);
-    });
+			var type = 'All';
+			if($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) type = "Contraband";
+			else if($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) type = "Search";
+			var layer = 'april' + type;
+			map.eachLayer(function (layer) {
+						map.removeLayer(layer);
+				});
+			map.addLayer(layer);
+		});
 		$("#May").click(function() {
-        map.removeLayer(january);
-				map.removeLayer(february);
-				map.removeLayer(march);
-				map.removeLayer(april);
-				map.removeLayer(may);
-				map.removeLayer(july);
-				map.removeLayer(august);
-				map.removeLayer(september);
-				map.removeLayer(october);
-				map.removeLayer(november);
-				map.removeLayer(december);
-				map.addLayer(may);
-    });
+			var type = 'All';
+			if($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) type = "Contraband";
+			else if($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) type = "Search";
+			var layer = 'may' + type;
+			map.eachLayer(function (layer) {
+						map.removeLayer(layer);
+				});
+			map.addLayer(layer);
+		});
 		$("#Jun").click(function() {
-        map.removeLayer(january);
-				map.removeLayer(february);
-				map.removeLayer(march);
-				map.removeLayer(april);
-				map.removeLayer(may);
-				map.removeLayer(july);
-				map.removeLayer(august);
-				map.removeLayer(september);
-				map.removeLayer(october);
-				map.removeLayer(november);
-				map.removeLayer(december);
-				map.addLayer(june);
+			var type = 'All';
+			if($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) type = "Contraband";
+			else if($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) type = "Search";
+			var layer = 'june' + type;
+			map.eachLayer(function (layer) {
+						map.removeLayer(layer);
+				});
+			map.addLayer(layer);
     });
 		$("#Jul").click(function() {
-        map.removeLayer(january);
-				map.removeLayer(february);
-				map.removeLayer(march);
-				map.removeLayer(april);
-				map.removeLayer(may);
-				map.removeLayer(july);
-				map.removeLayer(august);
-				map.removeLayer(september);
-				map.removeLayer(october);
-				map.removeLayer(november);
-				map.removeLayer(december);
-				map.addLayer(july);
+			var type = 'All';
+			if($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) type = "Contraband";
+			else if($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) type = "Search";
+			var layer = 'july' + type;
+			map.eachLayer(function (layer) {
+						map.removeLayer(layer);
+				});
+			map.addLayer(layer);
     });
 		$("#Aug").click(function() {
-        map.removeLayer(january);
-				map.removeLayer(february);
-				map.removeLayer(march);
-				map.removeLayer(april);
-				map.removeLayer(may);
-				map.removeLayer(july);
-				map.removeLayer(august);
-				map.removeLayer(september);
-				map.removeLayer(october);
-				map.removeLayer(november);
-				map.removeLayer(december);
-				map.addLayer(august);
+			var type = 'All';
+			if($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) type = "Contraband";
+			else if($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) type = "Search";
+			var layer = 'august' + type;
+			map.eachLayer(function (layer) {
+						map.removeLayer(layer);
+				});
+			map.addLayer(layer);
     });
 		$("#Sep").click(function() {
-				map.removeLayer(january);
-				map.removeLayer(february);
-				map.removeLayer(march);
-				map.removeLayer(april);
-				map.removeLayer(may);
-				map.removeLayer(july);
-				map.removeLayer(august);
-				map.removeLayer(september);
-				map.removeLayer(october);
-				map.removeLayer(november);
-				map.removeLayer(december);
-				map.addLayer(september);
+			var type = 'All';
+			if($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) type = "Contraband";
+			else if($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) type = "Search";
+			var layer = 'september' + type;
+			map.eachLayer(function (layer) {
+						map.removeLayer(layer);
+				});
+			map.addLayer(layer);
 		});
 		$("#Oct").click(function() {
-				map.removeLayer(january);
-				map.removeLayer(february);
-				map.removeLayer(march);
-				map.removeLayer(april);
-				map.removeLayer(may);
-				map.removeLayer(july);
-				map.removeLayer(august);
-				map.removeLayer(september);
-				map.removeLayer(october);
-				map.removeLayer(november);
-				map.removeLayer(december);
-				map.addLayer(october);
+			var type = 'All';
+			if($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) type = "Contraband";
+			else if($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) type = "Search";
+			var layer = 'october' + type;
+			map.eachLayer(function (layer) {
+						map.removeLayer(layer);
+				});
+			map.addLayer(layer);
 		});
 		$("#Nov").click(function() {
-				map.removeLayer(january);
-				map.removeLayer(february);
-				map.removeLayer(march);
-				map.removeLayer(april);
-				map.removeLayer(may);
-				map.removeLayer(july);
-				map.removeLayer(august);
-				map.removeLayer(september);
-				map.removeLayer(october);
-				map.removeLayer(november);
-				map.removeLayer(december);
-				map.addLayer(november);
+			var type = 'All';
+			if($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) type = "Contraband";
+			else if($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) type = "Search";
+			var layer = 'november' + type;
+			map.eachLayer(function (layer) {
+						map.removeLayer(layer);
+				});
+			map.addLayer(layer);
 		});
 		$("#Dec").click(function() {
-				map.removeLayer(january);
-				map.removeLayer(february);
-				map.removeLayer(march);
-				map.removeLayer(april);
-				map.removeLayer(may);
-				map.removeLayer(july);
-				map.removeLayer(august);
-				map.removeLayer(september);
-				map.removeLayer(october);
-				map.removeLayer(november);
-				map.removeLayer(december);
-				map.addLayer(december);
+			var type = 'All';
+			if($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) type = "Contraband";
+			else if($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) type = "Search";
+			var layer = 'december' + type;
+			map.eachLayer(function (layer) {
+						map.removeLayer(layer);
+				});
+			map.addLayer(layer);
 		});
 		$("#Full").click(function() {
-				map.removeLayer(january);
-				map.removeLayer(february);
-				map.removeLayer(march);
-				map.removeLayer(april);
-				map.removeLayer(may);
-				map.removeLayer(july);
-				map.removeLayer(august);
-				map.removeLayer(september);
-				map.removeLayer(october);
-				map.removeLayer(november);
-				map.removeLayer(december);
-				map.addLayer(january);
-				map.addLayer(february);
-				map.addLayer(march);
-				map.addLayer(april);
-				map.addLayer(may);
-				map.addLayer(july);
-				map.addLayer(august);
-				map.addLayer(september);
-				map.addLayer(october);
-				map.addLayer(november);
-				map.addLayer(december);
+			var type = 'All';
+			if($('#contrabandYes:checkbox:checked').length > 0 && $('#searchYes:checkbox:checked').length < 1) type = "Contraband";
+			else if($('#contrabandYes:checkbox:checked').length < 1 && $('#searchYes:checkbox:checked').length > 0) type = "Search";
+			var layer = type + 'Data';
+			map.eachLayer(function (layer) {
+						map.removeLayer(layer);
+				});
+			map.addLayer(layer);
 		});
-	});
-
-	$('#Asian').click(function(layer) {
-
-	});
-
-	$('#White').click(function() {
-
-	});
-
-	$('#Black').click(function() {
-
-	});
-
-	$('#Hispanic').click(function() {
-
-	});
-
-	$('#AllEthnicities').click(function() {
-
 	});
