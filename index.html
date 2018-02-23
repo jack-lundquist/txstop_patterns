@@ -35,28 +35,28 @@
       <!-- <p>This map uses crowd-sourced data from our NYU web mapping class, showing each student's favorite Pizza place.</p>
       <p>Click a circle to see the name of the pizza shop and which student likes to eat there.</p> -->
       <div class="btn-group">
-          <button type="button" id="Full">Full Year (2015)</button>
-          <button type="button" id="Jan">January</button>
-          <button type="button" id="Feb">February</button>
-          <button type="button" id="Mar">March</button>
-          <button type="button" id="Apr">April</button>
+          <button type="button" class="month" data-month='all' id="Full">Full Year (2015)</button>
+          <button type="button" class="month" data-month='2015-01' id="Jan">January</button>
+          <button type="button" class="month" data-month='2015-02' id="Feb">February</button>
+          <button type="button" class="month" data-month='2015-03' id="Mar">March</button>
+          <button type="button" class="month" data-month='2015-04' id="Apr">April</button>
           <br>
-          <button type="button" id="May">May</button>
-          <button type="button" id="Jun">June</button>
-          <button type="button" id="Jul">July</button>
-          <button type="button" id="Aug">August</button>
-          <button type="button" id="Sep">September</button>
-          <button type="button" id="Oct">October</button>
-          <button type="button" id="Nov">November</button>
-          <button type="button" id="Dec">December</button>
+          <button type="button" class="month" data-month='2015-05' id="May">May</button>
+          <button type="button" class="month" data-month='2015-06' id="Jun">June</button>
+          <button type="button" class="month" data-month='2015-07' id="Jul">July</button>
+          <button type="button" class="month" data-month='2015-08' id="Aug">August</button>
+          <button type="button" class="month" data-month='2015-09' id="Sep">September</button>
+          <button type="button" class="month" data-month='2015-10' id="Oct">October</button>
+          <button type="button" class="month" data-month='2015-11' id="Nov">November</button>
+          <button type="button" class="month" data-month='2015-12' id="Dec">December</button>
           <br>
     </div>
     <div>
-    <input type="checkbox" id="contrabandYes" name="contrabandFoundYes" value="contY">
+    <input type="checkbox" class='check' id="contrabandYes" name="contrabandFoundYes" value="contY">
     <label for="contrabandYes">Contraband Found? (Check for Yes)</label>
     </div>
     <div>
-    <input type="checkbox" id="searchYes" name="searchFoundYes" value="searchY">
+    <input type="checkbox" class='check' id="searchYes" name="searchFoundYes" value="searchY">
     <label for="searchYes">Search Conducted? (Check for Yes)</label>
     </div>
   </div>
@@ -72,6 +72,7 @@
   crossorigin="anonymous"></script>
   <!-- <script src="data/dallas.geojson"></script> -->
   <!-- <script src="data/dallas3.geojson"></script> -->
+  <script src="js/dallas3.js"></script>
   <script src="js/scripts.js"></script>
 
   </body>
