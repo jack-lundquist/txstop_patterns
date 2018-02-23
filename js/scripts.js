@@ -17,7 +17,9 @@ function month_type_filt(feature) {
 	{return true};
 	if(search=='0' && contraband=='0' && month!='all')
 	{return feature.properties.stop_date.includes(month)};
-	if(search=='0' && contraband=='1' && month=='all')
+	if(search=='1' && contraband=='1' && month=='all')
+	{return feature.properties.contraband_found == "1" && feature.properties.search_conducted == "1"};
+	if(search=='1' && contraband=='0' && month=='all')
 	{return feature.properties.search_conducted == "1"};
 	if(search=='0' && contraband=='1' && month=='all')
 	{return feature.properties.contraband_found == "1"};
